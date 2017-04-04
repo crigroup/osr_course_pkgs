@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package>
+  <name>osr_control</name>
+  <version>0.1.0</version>
+  <description>The osr_control package</description>
+  <maintainer email="fsuarez.ruiz@pmail.ntu.edu.sg">Francisco Suarez Ruiz</maintainer>
+  <license>BSD</license>
+  <author email="fsuarez.ruiz@pmail.ntu.edu.sg">Francisco Suarez Ruiz</author>
+  <url type="website">http://osrobotics.org</url>
+  <url type="bugtracker">https://github.com/quangounet/osr_course_pkgs/issues</url>
+  <url type="repository">https://github.com/quangounet/osr_course_pkgs</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>effort_controllers</build_depend>
+  <build_depend>gripper_action_controller</build_depend>
+  <build_depend>joint_state_controller</build_depend>
+  <build_depend>joint_trajectory_controller</build_depend>
+  <build_depend>osr_description</build_depend>
+  <build_depend>robot_state_publisher</build_depend>
+  
+  <run_depend>effort_controllers</run_depend>
+  <run_depend>gripper_action_controller</run_depend>
+  <run_depend>joint_state_controller</run_depend>
+  <run_depend>joint_trajectory_controller</run_depend>
+  <run_depend>osr_description</run_depend>
+  <run_depend>robot_state_publisher</run_depend>
+</package>

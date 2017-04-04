@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- launch file parameters -->
+  <arg name="paused"      default="false"/>
+  <arg name="debug"       default="false"/>
+  <arg name="gui"         default="true"/>
+  <arg name="rate"        default="125" />
+  
+  <!-- startup simulated world -->
+  <include file="$(find osr_gazebo)/launch/robotic_setup.launch">
+    <arg name="world_name"  value="$(find osr_gazebo)/worlds/cubes_task.world"/>
+    <arg name="paused"      value="$(arg paused)"/>
+    <arg name="debug"       value="$(arg debug)"/>
+    <arg name="gui"         value="$(arg gui)"/>
+  </include>
+  
+  <!-- Broadcast static tf for kinect -->
+  <node name="kinect_link_broadcaster" pkg="tf" type="static_transform_publisher" args="0.536 0 1 1.5708 3.14159 0 base_link openni_depth_optical_frame 100" /> 
+</launch>

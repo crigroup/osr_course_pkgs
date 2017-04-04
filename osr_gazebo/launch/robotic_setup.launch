@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Export env variable so that gazebo finds our models -->
+  <env name="GAZEBO_MODEL_PATH" value="$(find osr_gazebo)/models:$(optenv GAZEBO_MODEL_PATH)" />
+  
+  <!-- launch file parameters -->
+  <arg name="paused"      default="false"/>
+  <arg name="debug"       default="false"/>
+  <arg name="gui"         default="true"/>
+  <arg name="rate"        default="125" />
+  <arg name="world_name"  default="$(find osr_gazebo)/worlds/robotic_setup.world" />
+  
+  <!-- startup simulated world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name"  value="$(arg world_name)"/>
+    <arg name="paused"      value="$(arg paused)"/>
+    <arg name="debug"       value="$(arg debug)"/>
+    <arg name="gui"         value="$(arg gui)"/>
+  </include>
+  
+  <!-- send robot urdf to param server -->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find osr_description)/urdf/denso_robotiq_85_gripper.urdf.xacro'" />
+  <!-- spawn robot in gazebo -->
+  <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model robot -z 0.59" output="screen" />
+</launch>

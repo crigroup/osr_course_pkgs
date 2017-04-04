@@ -1,0 +1,240 @@
+<?xml version="1.0"?>
+<robot name="denso_vs060" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://denso_description/urdf/meshes/BASE.dae"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://denso_description/urdf/meshes/BASE.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1000" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="20" ixy="0" ixz="0" iyy="20" iyz="0" izz="20"/>
+    </inertial>
+  </link>
+  <link name="J1">
+    <visual>
+      <origin xyz="0 0 0.1815" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://denso_description/urdf/meshes/J1.dae"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.1815" rpy="0 -0 0"/>
+      <geometry>
+        <mesh filename="package://denso_description/urdf/meshes/J1.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="4.327" />
+      <origin xyz="0.013885 -0.005997 0.043991" rpy="0 0 0"/>
+      <inertia ixx="0.025492" ixy="0" ixz="0" iyy="0.032502" iyz="0" izz="0.01779"/>
+    </inertial>
+  </link>
+  <link name="J2">
+    <visual>
+      <origin xyz="0 0 0.1635" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://denso_description/urdf/meshes/J2.dae"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.1635" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://denso_description/urdf/meshes/J2.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="9.475" />
+      <origin xyz="0.015837 -0.073696 0.010087" rpy="0 0 0"/>
+      <inertia ixx="0.108024" ixy="0" ixz="0" iyy="0.025579" iyz="0" izz="0.112871"/>
+    </inertial>
+  </link>
+  <link name="J3">
+    <visual>
+      <origin xyz="0 0 0.305" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://denso_description/urdf/meshes/J3.dae"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.305" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://denso_description/urdf/meshes/J3.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="4.097" />
+      <origin xyz="0.011544 -0.057408 0.006203" rpy="0 0 0"/>
+      <inertia ixx="0.015999" ixy="0" ixz="0" iyy="0.00638" iyz="0" izz="0.016882"/>
+    </inertial>
+  </link>
+  <link name="J4">
+    <visual>
+      <origin xyz="-0.01 0 0.1645" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://denso_description/urdf/meshes/J4.dae"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0.01 0 0.1645" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://denso_description/urdf/meshes/J4.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.779" />
+      <origin xyz="0.003998 -0.004975 0.052919" rpy="0 0 0"/>
+      <inertia ixx="0.005106" ixy="0" ixz="0" iyy="0.005266" iyz="0" izz="0.002621"/>
+    </inertial>
+  </link>
+  <link name="J5">
+    <visual>
+      <origin xyz="0 0 0.1355" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://denso_description/urdf/meshes/J5.dae"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.1355" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://denso_description/urdf/meshes/J5.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.211" />
+      <origin xyz="0.011902 -0.004739 0.010398" rpy="0 0 0"/>
+      <inertia ixx="0.001093" ixy="0" ixz="0" iyy="0.001629" iyz="0" izz="0.001615"/>
+    </inertial>
+  </link>
+  <link name="J6">
+    <visual>
+      <origin xyz="0 0 0.07" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://denso_description/urdf/meshes/J6.dae"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.07" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://denso_description/urdf/meshes/J6.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="4.154" />
+      <origin xyz="-0.000401015 0.0770342 0.0962886" rpy="0 0 0"/>
+      <inertia ixx="0.0216473" ixy="-0.000147026" ixz="-0.00011778" iyy="0.0346876" iyz="0.00159321" izz="0.022927"/>
+    </inertial>
+  </link>
+  
+  <joint name="j1" type="revolute">
+    <parent link="base_link"/>
+    <child  link="J1"/>
+    <origin xyz="0 0 0.1815" rpy="0 0 0 "/>
+    <axis   xyz="0 0 1"/>
+    <limit lower="-2.96705973" upper="2.96705973" effort="19.7336" velocity="4.0" />
+    <dynamics damping="0.2" friction="0" />
+  </joint>
+  <joint name="j2" type="revolute">
+    <parent link="J1"/>
+    <child  link="J2"/>
+    <origin xyz="0 0 0.1635" rpy="0 0 0 "/>
+    <axis   xyz="0 1 0"/>
+    <limit lower="-2.0943951" upper="2.0943951" effort="16.8447" velocity="3.0" />
+    <dynamics damping="0.2" friction="0" />
+  </joint>
+  <joint name="j3" type="revolute">
+    <parent link="J2"/>
+    <child  link="J3"/>
+    <origin xyz="0 0 0.305" rpy="0 0 0 "/>
+    <axis   xyz="0 1 0"/>
+    <limit lower="-2.18166156" upper="2.70526034" effort="20.7089" velocity="3.0" />
+    <dynamics damping="0.2" friction="0" />
+  </joint>
+  <joint name="j4" type="revolute">
+    <parent link="J3"/>
+    <child  link="J4"/>
+    <origin xyz="-0.01 0 0.1645" rpy="0 0 0 "/>
+    <axis   xyz="0 0 1"/>
+    <limit lower="-4.71238898" upper="4.71238898" effort="20.9665" velocity="4.0" />
+    <dynamics damping="0.2" friction="0" />
+  </joint>
+  <joint name="j5" type="revolute">
+    <parent link="J4"/>
+    <child  link="J5"/>
+    <origin xyz="0 0 0.1355" rpy="0 0 0 "/>
+    <axis   xyz="0 1 0"/>
+    <limit lower="-1.65806279" upper="1.65806279" effort="23.7229" velocity="3.0" />
+    <dynamics damping="0.2" friction="0" />
+  </joint>
+  <joint name="j6" type="revolute">
+    <parent link="J5"/>
+    <child  link="J6"/>
+    <origin xyz="0 0 0.07" rpy="0 0 0"/>
+    <axis   xyz="0 0 1"/>
+    <limit lower="-3.2288" upper="3.2288" effort="33.5103" velocity="6.3" />
+    <dynamics damping="0.2" friction="0" />
+  </joint>
+  
+  <transmission name="j1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="j1">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="j1_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="j2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="j2">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="j2_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="j3">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="j3">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="j3_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="j4">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="j4">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="j4_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="j5">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="j5">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="j5_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="j6">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="j6">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="j6_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+</robot>
