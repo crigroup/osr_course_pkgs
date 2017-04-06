@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Robot name="denso_robotiq_85_gripper">
+  
+  <!-- Include the robots -->
+  <Robot file="denso_vs060.dae"></Robot>
+  <Kinbody file="robotiq_85_gripper.robot.xml">
+    <rotationaxis>0 0 1 90</rotationaxis>
+  </Kinbody>
+  
+  <!-- Attach the gripper to the robot -->
+  <Kinbody>
+    <body name="robotiq_coupler">
+      <offsetfrom>link6</offsetfrom>
+    </body>
+    <joint name="joint_denso_robotiq" type="hinge" enable="false">
+      <body>link6</body>
+      <body>robotiq_coupler</body>
+      <limits>0 0</limits>
+    </joint>
+  </Kinbody>
+  
+  <!-- Define the manipulator -->
+  <Manipulator name="gripper">
+    <base>link0</base>
+    <effector>robotiq_coupler</effector>
+    <translation>0 0 0.144</translation>
+    <joints>robotiq_85_left_knuckle_joint</joints>
+    <closingdirection>1 1 1 0</closingdirection>
+    <direction>0 0 1</direction>
+  </Manipulator>
+  
+  <!-- This one if for backwards compatibility -->
+  <Manipulator name="denso_robotiq_85_gripper">
+    <base>link0</base>
+    <effector>robotiq_coupler</effector>
+    <translation>0 0 0.144</translation>
+    <joints>robotiq_85_left_knuckle_joint</joints>
+    <closingdirection>1 1 1 0</closingdirection>
+    <direction>0 0 1</direction>
+  </Manipulator>
+</Robot>

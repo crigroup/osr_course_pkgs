@@ -29,7 +29,7 @@
       </include>
     </model>
     <!-- Table -->
-    <!-- Table top is at (x,y,z) = (0.7, 0, 0.8) -->
+    <!-- Table top is at (x,y,z) = (0.7, 0, 0.775) -->
     <!-- Table top size 0.9 x 0.9 -->
     <model name="cafe_table">
       <static>true</static>

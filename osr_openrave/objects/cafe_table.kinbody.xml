@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kinbody name="cafe_table">
+  <body name="mesh">
+    <geom type="trimesh">
+      <data>meshes/cafe_table.stl 0.001</data>
+      <diffusecolor>0.263 0.184 0.129</diffusecolor>
+    </geom>
+  </body>
+</kinbody>
