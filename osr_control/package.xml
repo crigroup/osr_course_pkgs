@@ -11,17 +11,25 @@
   <url type="repository">https://github.com/quangounet/osr_course_pkgs</url>
 
   <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>control_msgs</build_depend>
+  <build_depend>controller_manager</build_depend>
   <build_depend>effort_controllers</build_depend>
   <build_depend>gripper_action_controller</build_depend>
   <build_depend>joint_state_controller</build_depend>
   <build_depend>joint_trajectory_controller</build_depend>
   <build_depend>osr_description</build_depend>
   <build_depend>robot_state_publisher</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>trajectory_msgs</build_depend>
   
+  <run_depend>control_msgs</run_depend>
+  <run_depend>controller_manager</run_depend>
   <run_depend>effort_controllers</run_depend>
   <run_depend>gripper_action_controller</run_depend>
   <run_depend>joint_state_controller</run_depend>
   <run_depend>joint_trajectory_controller</run_depend>
   <run_depend>osr_description</run_depend>
   <run_depend>robot_state_publisher</run_depend>
+  <run_depend>sensor_msgs</run_depend>
+  <run_depend>trajectory_msgs</run_depend>
 </package>

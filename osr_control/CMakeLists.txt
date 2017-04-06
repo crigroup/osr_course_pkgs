@@ -2,12 +2,16 @@ cmake_minimum_required(VERSION 2.8.3)
 project(osr_control)
 
 find_package(catkin REQUIRED COMPONENTS
+  control_msgs
+  controller_manager
   effort_controllers
   gripper_action_controller
   joint_state_controller
   joint_trajectory_controller
   osr_description
   robot_state_publisher
+  sensor_msgs
+  trajectory_msgs
 )
 
 catkin_python_setup()
