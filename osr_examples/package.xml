@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package>
+  <name>osr_examples</name>
+  <version>0.1.0</version>
+  <description>The osr_examples package</description>
+  <maintainer email="fsuarez.ruiz@pmail.ntu.edu.sg">Francisco Suarez Ruiz</maintainer>
+  <license>BSD</license>
+  <author email="fsuarez.ruiz@pmail.ntu.edu.sg">Francisco Suarez Ruiz</author>
+  <url type="website">http://osrobotics.org</url>
+  <url type="bugtracker">https://github.com/quangounet/osr_course_pkgs/issues</url>
+  <url type="repository">https://github.com/quangounet/osr_course_pkgs</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  
+  <build_depend>osr_control</build_depend>
+  <build_depend>osr_description</build_depend>
+  <build_depend>osr_gazebo</build_depend>
+  <build_depend>osr_openrave</build_depend>
+  
+  <run_depend>osr_control</run_depend>
+  <run_depend>osr_description</run_depend>
+  <run_depend>osr_gazebo</run_depend>
+  <run_depend>osr_openrave</run_depend>
+  
+</package>
