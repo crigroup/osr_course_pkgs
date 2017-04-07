@@ -5,6 +5,8 @@ find_package(catkin REQUIRED COMPONENTS
   openrave_catkin
 )
 
+catkin_python_setup()
+
 catkin_package()
 
 include_directories(${catkin_INCLUDE_DIRS})
