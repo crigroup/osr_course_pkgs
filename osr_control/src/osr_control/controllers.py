@@ -5,12 +5,93 @@ import rospy
 import criros
 import actionlib
 import numpy as np
-# Messages
-from control_msgs.msg import FollowJointTrajectoryAction, FollowJointTrajectoryGoal
-from controller_manager_msgs.srv import ListControllers
-from sensor_msgs.msg import JointState
 from std_msgs.msg import Float64
+from controller_manager_msgs.srv import ListControllers
+# Joint trajectory action
+from sensor_msgs.msg import JointState
 from trajectory_msgs.msg import JointTrajectoryPoint
+from control_msgs.msg import FollowJointTrajectoryAction, FollowJointTrajectoryGoal
+# Gripper action
+from control_msgs.msg import GripperCommandAction, GripperCommandGoal
+# Link attacher
+from gazebo_ros_link_attacher.srv import Attach, AttachRequest, AttachResponse
+
+
+class GripperController(object):
+  def __init__(self, namespace='', timeout=5.0, attach_link='robot::J6'):
+    self.ns = criros.utils.solve_namespace(namespace)
+    # gazebo_ros link attacher
+    self.attach_link = attach_link
+    self.attach_srv = rospy.ServiceProxy('/link_attacher_node/attach', Attach)
+    self.detach_srv = rospy.ServiceProxy('/link_attacher_node/detach', Attach)
+    rospy.logdebug('Waiting for service: {0}'.format(self.attach_srv.resolved_name))
+    rospy.logdebug('Waiting for service: {0}'.format(self.detach_srv.resolved_name))
+    self.attach_srv.wait_for_service()
+    self.detach_srv.wait_for_service()
+    # Gripper action server
+    action_server = self.ns + 'gripper_controller/gripper_cmd'
+    self._client = actionlib.SimpleActionClient(action_server, GripperCommandAction)
+    self._goal = GripperCommandGoal()
+    rospy.logdebug('Waiting for [%s] action server' % action_server)
+    server_up = self._client.wait_for_server(timeout=rospy.Duration(timeout))
+    if not server_up:
+      rospy.logerr('Timed out waiting for Gripper Command'
+                   ' Action Server to connect. Start the action server'
+                   ' before running this node.')
+      raise rospy.ROSException('GripperCommandAction timed out: {0}'.format(action_server))
+    rospy.logdebug('Successfully connected to [%s]' % action_server)
+    rospy.loginfo('GripperCommandAction initialized. ns: {0}'.format(self.ns))
+  
+  def close(self):
+    self.command(0.085)
+  
+  def command(self, position):
+    angle = self.distance_to_angle(position)
+    self._goal.command.position = angle
+    self._client.send_goal(self._goal)
+  
+  def distance_to_angle(self, distance):
+    max_gap = 0.085
+    distance = np.clip(distance, 0, max_gap)
+    angle = (max_gap - distance) * np.deg2rad(46) / max_gap
+    return angle
+  
+  def get_result(self):
+    return self._client.get_result()
+  
+  def get_state(self):
+    return self._client.get_state()
+  
+  def grab(self, link_name):
+    parent = self.attach_link.split('::')
+    child = link_name.split('::')
+    req = AttachRequest()
+    req.model_name_1 = parent[0]
+    req.link_name_1 = parent[1]
+    req.model_name_2 = child[0]
+    req.link_name_2 = child[1]
+    res = self.attach_srv.call(req)
+    return res.ok
+  
+  def open(self):
+    self.command(0.0)
+  
+  def release(self, link_name):
+    parent = self.attach_link.rsplit('::')
+    child = link_name.rsplit('::')
+    req = AttachRequest()
+    req.model_name_1 = parent[0]
+    req.link_name_1 = parent[1]
+    req.model_name_2 = child[0]
+    req.link_name_2 = child[1]
+    res = self.detach_srv.call(req)
+    return res.ok
+  
+  def stop(self):
+    self._client.cancel_goal()
+  
+  def wait(self, timeout=15.0):
+    return self._client.wait_for_result(timeout=rospy.Duration(timeout))
 
 
 class JointControllerBase(object):
@@ -237,7 +318,7 @@ class JointTrajectoryController(JointControllerBase):
     """
     Clear all points in the trajectory.
     """
-    self._goal.trajectory.points[:]=[]
+    self._goal.trajectory.points = []
     
   def get_num_points(self):
     """

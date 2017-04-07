@@ -34,7 +34,6 @@
   <gazebo reference="robotiq_coupler">
     <mu1>0.9</mu1>
     <mu2>0.9</mu2>
-    <selfCollide>true</selfCollide>
     <material>Gazebo/FlatBlack</material>
   </gazebo>
   
@@ -68,9 +67,9 @@
   <gazebo>
     <gripper name="gazebo_gripper">
       <grasp_check>
-        <attach_steps>1</attach_steps>    <!-- default: 20 -->
-        <detach_steps>1</detach_steps>    <!-- default: 40 -->
-        <min_contact_count>2</min_contact_count>
+        <attach_steps>2</attach_steps>    <!-- default: 20 -->
+        <detach_steps>2</detach_steps>    <!-- default: 40 -->
+        <min_contact_count>3</min_contact_count>
       </grasp_check>
       <gripper_link>robotiq_85_left_finger_tip_link</gripper_link>
       <gripper_link>robotiq_85_right_finger_tip_link</gripper_link>

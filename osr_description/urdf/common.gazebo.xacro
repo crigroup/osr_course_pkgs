@@ -2,9 +2,9 @@
 <robot name="denso_vs060" xmlns:xacro="http://www.ros.org/wiki/xacro">
   <!-- Links -->
   <gazebo reference="base_link">
+    <selfCollide>false</selfCollide>
     <mu1>0.9</mu1>
     <mu2>0.9</mu2>
-    <selfCollide>true</selfCollide>
     <collision>
       <surface>
         <contact>
@@ -16,32 +16,26 @@
   <gazebo reference="J1">
     <mu1>0.9</mu1>
     <mu2>0.9</mu2>
-    <selfCollide>true</selfCollide>
   </gazebo>
   <gazebo reference="J2">
     <mu1>0.9</mu1>
     <mu2>0.9</mu2>
-    <selfCollide>true</selfCollide>
   </gazebo>
   <gazebo reference="J3">
     <mu1>0.9</mu1>
     <mu2>0.9</mu2>
-    <selfCollide>true</selfCollide>
   </gazebo>
   <gazebo reference="J4">
     <mu1>0.9</mu1>
     <mu2>0.9</mu2>
-    <selfCollide>true</selfCollide>
   </gazebo>
   <gazebo reference="J5">
     <mu1>0.9</mu1>
     <mu2>0.9</mu2>
-    <selfCollide>true</selfCollide>
   </gazebo>
   <gazebo reference="J6">
     <mu1>0.9</mu1>
     <mu2>0.9</mu2>
-    <selfCollide>true</selfCollide>
   </gazebo>
   <!-- ros_control plugin  -->
   <gazebo>
