@@ -163,7 +163,7 @@ class JointPositionController(JointControllerBase):
 class JointTrajectoryController(JointControllerBase):
   """
   This class creates a C{SimpleActionClient} that connects to the 
-  C{position_trajectory_controller/follow_joint_trajectory} action server. Using this 
+  C{trajectory_controller/follow_joint_trajectory} action server. Using this 
   interface you can control the robot by adding points to the trajectory. Each point 
   requires the goal position and the goal time. The velocity and acceleration are optional.
   
@@ -188,7 +188,7 @@ class JointTrajectoryController(JointControllerBase):
     @param timeout: Time in seconds that will wait for the controller
     """
     super(JointTrajectoryController, self).__init__(namespace, timeout=timeout)
-    action_server = self.ns + 'position_trajectory_controller/follow_joint_trajectory'
+    action_server = self.ns + 'trajectory_controller/follow_joint_trajectory'
     self._client = actionlib.SimpleActionClient(action_server, FollowJointTrajectoryAction)
     self._goal = FollowJointTrajectoryGoal()
     rospy.logdebug('Waiting for [%s] action server' % action_server)
@@ -197,7 +197,7 @@ class JointTrajectoryController(JointControllerBase):
       rospy.logerr('Timed out waiting for Joint Trajectory'
                    ' Action Server to connect. Start the action server'
                    ' before running this node.')
-      raise rospy.ROSException('JointTrajectoryController timed out: {0}'.format(self.ns))
+      raise rospy.ROSException('JointTrajectoryController timed out: {0}'.format(action_server))
     rospy.logdebug('Successfully connected to [%s]' % action_server)
     # Get a copy of joint_names
     if not hasattr(self, '_joint_names'):
