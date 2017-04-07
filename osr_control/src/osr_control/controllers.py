@@ -43,7 +43,7 @@ class GripperController(object):
     rospy.loginfo('GripperCommandAction initialized. ns: {0}'.format(self.ns))
   
   def close(self):
-    self.command(0.085)
+    self.command(0.0)
   
   def command(self, position):
     angle = self.distance_to_angle(position)
@@ -74,7 +74,7 @@ class GripperController(object):
     return res.ok
   
   def open(self):
-    self.command(0.0)
+    self.command(0.085)
   
   def release(self, link_name):
     parent = self.attach_link.rsplit('::')

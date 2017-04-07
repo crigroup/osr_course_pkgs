@@ -18,10 +18,10 @@ if __name__ == '__main__':
   if not env.Load('worlds/cubes_task.env.xml'):
     rospy.logerr('Failed to load the world. Did you run: catkin_make install?')
     exit(1)
-  #~ env.SetDefaultViewer()
-  #~ Tcamera = tr.euler_matrix(*np.deg2rad([-120, 13, 135]))
-  #~ Tcamera[:3,3] = [1, 1, 2]
-  #~ env.GetViewer().SetCamera(Tcamera)
+  env.SetDefaultViewer()
+  Tcamera = tr.euler_matrix(*np.deg2rad([-120, 13, 135]))
+  Tcamera[:3,3] = [1, 1, 2]
+  env.GetViewer().SetCamera(Tcamera)
   # Setup robot and manipulator
   robot = env.GetRobot('robot')
   manipulator = robot.SetActiveManipulator('gripper')
@@ -54,12 +54,7 @@ if __name__ == '__main__':
   cube_centroid = cube.ComputeAABB().pos()
   Tgrasp = tr.euler_matrix(0, np.pi, 0)
   Tgrasp[:3,3] = cube_centroid
-  Tgrasp[2,3] += 0.01
   qgrasp = kinematics.find_closest_iksolution(robot, Tgrasp, iktype)
-  if qgrasp is None:
-    rospy.logerr('Failed to find a valid IK for grasping the cube')
-    IPython.embed()
-    exit(1)
   axes = []
   axes.append( orpy.misc.DrawAxes(env, Tgrasp, dist=0.05) )
   
@@ -83,13 +78,42 @@ if __name__ == '__main__':
   Tretreat[2,3] += 0.1
   axes.append( orpy.misc.DrawAxes(env, Tretreat, dist=0.05) )
   qretreat = kinematics.find_closest_iksolution(robot, Tretreat, iktype)
-  if qretreat is None:
-    rospy.logerr('Failed to find a valid IK for the retreat pose')
-    IPython.embed()
-    exit(1)
   
   # Move to the retreat pose
   traj = planning.plan_to_joint_configuration(robot, qretreat)
+  ros_traj = criros.conversions.ros_trajectory_from_openrave(robot.GetName(), traj)
+  trajectory_controller.set_trajectory(ros_traj)
+  trajectory_controller.start()
+  robot.GetController().SetPath(traj)
+  trajectory_controller.wait()
+  
+  # Find a valid IK solution for the placing pose
+  base_cube = env.GetKinBody('cube02')
+  aabb = base_cube.ComputeAABB()
+  Tplace = np.array(Tgrasp)
+  Tplace[:3,3] = aabb.pos()
+  Tplace[2,3] += 2*aabb.extents()[2]
+  axes.append( orpy.misc.DrawAxes(env, Tplace, dist=0.05) )
+  qplace = kinematics.find_closest_iksolution(robot, Tplace, iktype)
+  
+  # Move to the placing pose
+  traj = planning.plan_to_joint_configuration(robot, qplace)
+  ros_traj = criros.conversions.ros_trajectory_from_openrave(robot.GetName(), traj)
+  trajectory_controller.set_trajectory(ros_traj)
+  trajectory_controller.start()
+  robot.GetController().SetPath(traj)
+  trajectory_controller.wait()
+  
+  # Release the cube
+  gripper_controller.open()
+  taskmanip.ReleaseFingers()
+  gripper_controller.wait()
+  robot.WaitForController(0)
+  robot.Release(cube)
+  gripper_controller.release('{0}::link'.format(cube.GetName()))
+  
+  # Move back home
+  traj = planning.plan_to_joint_configuration(robot, np.zeros(6))
   ros_traj = criros.conversions.ros_trajectory_from_openrave(robot.GetName(), traj)
   trajectory_controller.set_trajectory(ros_traj)
   trajectory_controller.start()

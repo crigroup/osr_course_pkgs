@@ -4,12 +4,13 @@ import numpy as np
 import openravepy as orpy
 import tf.transformations as tr
 
+
 if __name__ == '__main__':
   # Load the environment
   env = orpy.Environment()
   if not env.Load('worlds/cubes_task.env.xml'):
     raise Exception('Failed to load the world. Did you run: catkin_make install?')
-  env.SetViewer('qtcoin')
+  env.SetDefaultViewer()
   Tcamera = tr.euler_matrix(*np.deg2rad([-120, 13, 135]))
   Tcamera[:3,3] = [1, 1, 2]
   env.GetViewer().SetCamera(Tcamera)
@@ -106,6 +107,6 @@ if __name__ == '__main__':
   controller = robot.GetController()
   controller.SetPath(traj)
   robot.WaitForController(0)
+  
+  # Use for debugging
   IPython.embed()
-  env.Reset()
-  env.Destroy()
