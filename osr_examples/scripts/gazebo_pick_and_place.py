@@ -13,7 +13,7 @@ if __name__ == '__main__':
   # Initialize a ROS node
   rospy.init_node('gazebo_pick_and_place')
   
-  # Load the environment
+  # Load the OpenRAVE environment
   env = orpy.Environment()
   if not env.Load('worlds/cubes_task.env.xml'):
     rospy.logerr('Failed to load the world. Did you run: catkin_make install?')
@@ -28,9 +28,9 @@ if __name__ == '__main__':
   robot.SetActiveDOFs(manipulator.GetArmIndices())
   taskmanip = orpy.interfaces.TaskManipulation(robot)
   # Scale down the velocity and acceleration limits
-  robot.SetDOFVelocityLimits(robot.GetDOFVelocityLimits()*0.2)
+  robot.SetDOFVelocityLimits(robot.GetDOFVelocityLimits()*0.4)
   robot.SetDOFAccelerationLimits(robot.GetDOFAccelerationLimits()*0.2)
-  # Connect to the hardware
+  # Connect to the hardware interfaces
   trajectory_controller = JointTrajectoryController()
   gripper_controller = GripperController()
   
@@ -122,3 +122,5 @@ if __name__ == '__main__':
   
   # Use for debugging
   IPython.embed()
+  env.Reset()
+  env.Destroy()

@@ -110,3 +110,5 @@ if __name__ == '__main__':
   
   # Use for debugging
   IPython.embed()
+  env.Reset()
+  env.Destroy()
