@@ -1,0 +1,36 @@
+<KinBody name="container">
+  <Translation>0 0 0</Translation>
+  <Body type="dynamic">
+    <Geom type="box">
+      <Extents>0.2 0.005 0.12</Extents>
+      <Translation>0 0 0</Translation>
+      <diffuseColor>1 0.5 0.5</diffuseColor>
+      <transparency>0.4</transparency>
+    </Geom>
+    <Geom type="box">
+      <Extents>0.2 0.005 0.12</Extents>
+      <Translation>0 0.2 0</Translation>
+      <diffuseColor>1 0.5 0.5</diffuseColor>
+      <transparency>0.4</transparency>
+    </Geom>
+    <Geom type="box">
+      <Extents>0.005 0.1 0.12</Extents>
+      <Translation>0.2 0.1 0</Translation>
+      <diffuseColor>1 0.5 0.5</diffuseColor>
+      <transparency>0.4</transparency>
+    </Geom>
+    <Geom type="box">
+      <Extents>0.005 0.1 0.12</Extents>
+      <Translation>-0.2 0.1 0</Translation>
+      <diffuseColor>1 0.5 0.5</diffuseColor>
+      <transparency>0.4</transparency>
+    </Geom>
+    <Geom type="box">
+      <Extents>0.2 0.1 0.005</Extents>
+      <Translation>0 0.1 -0.12</Translation>
+      <diffuseColor>1 0.5 0.5</diffuseColor>
+      <transparency>0.4</transparency>
+    </Geom>
+
+  </Body>
+</KinBody>

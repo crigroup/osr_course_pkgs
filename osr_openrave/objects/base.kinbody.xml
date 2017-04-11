@@ -1,0 +1,15 @@
+<KinBody name="base">
+  <Translation>0 0 0</Translation>
+  <RotationAxis>0 0 1 90</RotationAxis>
+  <Body type="dynamic">
+    <Mass type="mimicgeom">
+      <total>0.285</total>
+	</Mass>
+    <!-- Reference point will be at the base of the box -->
+	<Geom type="box">
+	  <Extents>0.2 0.2 0.3</Extents>
+	  <Translation>0 0 0</Translation>
+	  <diffuseColor>0.4 0.4 0.4</diffuseColor>
+	</Geom>
+  </Body>
+</KinBody>
