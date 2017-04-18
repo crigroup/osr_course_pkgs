@@ -4,13 +4,13 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://denso_description/urdf/meshes/BASE.dae"/>
+        <mesh filename="package://osr_description/urdf/meshes/BASE.dae"/>
       </geometry>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://denso_description/urdf/meshes/BASE.stl"/>
+        <mesh filename="package://osr_description/urdf/meshes/BASE.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -23,13 +23,13 @@
     <visual>
       <origin xyz="0 0 0.1815" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://denso_description/urdf/meshes/J1.dae"/>
+        <mesh filename="package://osr_description/urdf/meshes/J1.dae"/>
       </geometry>
     </visual>
     <collision>
       <origin xyz="0 0 0.1815" rpy="0 -0 0"/>
       <geometry>
-        <mesh filename="package://denso_description/urdf/meshes/J1.stl"/>
+        <mesh filename="package://osr_description/urdf/meshes/J1.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -42,13 +42,13 @@
     <visual>
       <origin xyz="0 0 0.1635" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://denso_description/urdf/meshes/J2.dae"/>
+        <mesh filename="package://osr_description/urdf/meshes/J2.dae"/>
       </geometry>
     </visual>
     <collision>
       <origin xyz="0 0 0.1635" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://denso_description/urdf/meshes/J2.stl"/>
+        <mesh filename="package://osr_description/urdf/meshes/J2.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -61,13 +61,13 @@
     <visual>
       <origin xyz="0 0 0.305" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://denso_description/urdf/meshes/J3.dae"/>
+        <mesh filename="package://osr_description/urdf/meshes/J3.dae"/>
       </geometry>
     </visual>
     <collision>
       <origin xyz="0 0 0.305" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://denso_description/urdf/meshes/J3.stl"/>
+        <mesh filename="package://osr_description/urdf/meshes/J3.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -80,13 +80,13 @@
     <visual>
       <origin xyz="-0.01 0 0.1645" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://denso_description/urdf/meshes/J4.dae"/>
+        <mesh filename="package://osr_description/urdf/meshes/J4.dae"/>
       </geometry>
     </visual>
     <collision>
       <origin xyz="-0.01 0 0.1645" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://denso_description/urdf/meshes/J4.stl"/>
+        <mesh filename="package://osr_description/urdf/meshes/J4.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -99,13 +99,13 @@
     <visual>
       <origin xyz="0 0 0.1355" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://denso_description/urdf/meshes/J5.dae"/>
+        <mesh filename="package://osr_description/urdf/meshes/J5.dae"/>
       </geometry>
     </visual>
     <collision>
       <origin xyz="0 0 0.1355" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://denso_description/urdf/meshes/J5.stl"/>
+        <mesh filename="package://osr_description/urdf/meshes/J5.stl"/>
       </geometry>
     </collision>
     <inertial>
@@ -118,13 +118,13 @@
     <visual>
       <origin xyz="0 0 0.07" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://denso_description/urdf/meshes/J6.dae"/>
+        <mesh filename="package://osr_description/urdf/meshes/J6.dae"/>
       </geometry>
     </visual>
     <collision>
       <origin xyz="0 0 0.07" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://denso_description/urdf/meshes/J6.stl"/>
+        <mesh filename="package://osr_description/urdf/meshes/J6.stl"/>
       </geometry>
     </collision>
     <inertial>
