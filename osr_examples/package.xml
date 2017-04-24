@@ -21,5 +21,6 @@
   <run_depend>osr_description</run_depend>
   <run_depend>osr_gazebo</run_depend>
   <run_depend>osr_openrave</run_depend>
+  <run_depend>tf</run_depend>
   
 </package>
