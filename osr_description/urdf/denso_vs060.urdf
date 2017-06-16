@@ -186,7 +186,7 @@
   <transmission name="j1">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="j1">
-      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
     </joint>
     <actuator name="j1_motor">
       <mechanicalReduction>1</mechanicalReduction>
@@ -195,7 +195,7 @@
   <transmission name="j2">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="j2">
-      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
     </joint>
     <actuator name="j2_motor">
       <mechanicalReduction>1</mechanicalReduction>
@@ -204,7 +204,7 @@
   <transmission name="j3">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="j3">
-      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
     </joint>
     <actuator name="j3_motor">
       <mechanicalReduction>1</mechanicalReduction>
@@ -213,7 +213,7 @@
   <transmission name="j4">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="j4">
-      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
     </joint>
     <actuator name="j4_motor">
       <mechanicalReduction>1</mechanicalReduction>
@@ -222,7 +222,7 @@
   <transmission name="j5">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="j5">
-      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
     </joint>
     <actuator name="j5_motor">
       <mechanicalReduction>1</mechanicalReduction>
@@ -231,7 +231,7 @@
   <transmission name="j6">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="j6">
-      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
     </joint>
     <actuator name="j6_motor">
       <mechanicalReduction>1</mechanicalReduction>
