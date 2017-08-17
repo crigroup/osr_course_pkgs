@@ -46,3 +46,22 @@ trajectory_controller:
     j6:
       trajectory: 0
       goal: 0.01
+#Position controller
+j1:
+  type: position_controllers/JointPositionController
+  joint: j1
+j2:
+  type: position_controllers/JointPositionController
+  joint: j2
+j3:
+  type: position_controllers/JointPositionController
+  joint: j3
+j4:
+  type: position_controllers/JointPositionController
+  joint: j4
+j5:
+  type: position_controllers/JointPositionController
+  joint: j5
+j6:
+  type: position_controllers/JointPositionController
+  joint: j6
