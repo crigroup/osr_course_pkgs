@@ -17,6 +17,7 @@ class FTsensor(object):
   
   def __init__(self, namespace='', timeout=3.0):
     ns = criros.utils.solve_namespace(namespace)
+    self.raw_msg = None
     self.rate = 250
     self.wrench_rate = 250
     self.wrench_filter = criros.filters.ButterLowPass(2.5, self.rate, 2)
@@ -25,11 +26,9 @@ class FTsensor(object):
     self.wrench_queue = collections.deque(maxlen=self.wrench_window)
     rospy.Subscriber('%sft_sensor/raw' % ns, WrenchStamped, self.cb_raw)
     initime = rospy.get_time()
-    while not rospy.is_shutdown():
-      rospy.sleep(0.1)
-      if (rospy.get_time() - initime) > timeout:
-        rospy.logwarn('FTSensor: Cannot read raw wrench')
-        return
+    if not criros.utils.wait_for(lambda : self.raw_msg is not None, timeout=timeout):
+      rospy.logerr('Timed out waiting for {0}ft_sensor/raw topic'.format(ns))
+      return
     rospy.loginfo('FTSensor successfully initialized')
     
   def add_wrench_observation(self,wrench):
