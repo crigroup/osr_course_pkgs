@@ -4,12 +4,14 @@ import copy
 import rospy
 import criros
 import actionlib
+import collections
 import numpy as np
 from std_msgs.msg import Float64
 from controller_manager_msgs.srv import ListControllers
 # Joint trajectory action
 from sensor_msgs.msg import JointState
 from trajectory_msgs.msg import JointTrajectoryPoint
+from geometry_msgs.msg import WrenchStamped
 from control_msgs.msg import FollowJointTrajectoryAction, FollowJointTrajectoryGoal
 # Gripper action
 from control_msgs.msg import GripperCommandAction, GripperCommandGoal
@@ -394,3 +396,35 @@ class JointTrajectoryController(JointControllerBase):
     @return: True if the server connected in the allocated time. False on timeout
     """
     return self._client.wait_for_result(timeout=rospy.Duration(timeout))
+class FTsensor(object):
+  queue_len = 10
+  
+  def __init__(self, namespace='', timeout=3.0):
+    ns = criros.utils.solve_namespace(namespace)
+    self.raw_msg = None
+    self.rate = 250
+    self.wrench_rate = 250
+    self.wrench_filter = criros.filters.ButterLowPass(2.5, self.rate, 2)
+    self.wrench_window = int(self.wrench_rate)
+    assert( self.wrench_window >= 5)
+    self.wrench_queue = collections.deque(maxlen=self.wrench_window)
+    rospy.Subscriber('%sft_sensor/raw' % ns, WrenchStamped, self.cb_raw)
+    if not criros.utils.wait_for(lambda : self.raw_msg is not None, timeout=timeout):
+      rospy.logerr('Timed out waiting for {0}ft_sensor/raw topic'.format(ns))
+      return
+    rospy.loginfo('FTSensor successfully initialized')
+    
+  def add_wrench_observation(self,wrench):
+    self.wrench_queue.append(np.array(wrench))
+    
+  def cb_raw(self, msg):
+    self.raw_msg = copy.deepcopy(msg)
+    self.add_wrench_observation(criros.conversions.from_wrench(self.raw_msg.wrench))
+  
+  #function to filter out high frequency signal  
+  def get_filtered_wrench(self):
+    if len(self.wrench_queue) < self.wrench_window:
+      return None    
+    wrench_filtered = self.wrench_filter(np.array(self.wrench_queue))
+    return wrench_filtered[-1,:]
+    
