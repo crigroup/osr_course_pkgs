@@ -2,3 +2,4 @@
 - git: {local-name: gazebo_ros_link_attacher, uri: 'https://github.com/pal-robotics/gazebo_ros_link_attacher.git',  version: master}
 - git: {local-name: openrave_catkin,          uri: 'https://github.com/crigroup/openrave_catkin.git',               version: master}
 - git: {local-name: robotiq,                  uri: 'https://github.com/crigroup/robotiq.git',                       version: master}
+- git: {local-name: gazebo_ros_pkgs,          uri: 'https://github.com/ros-simulation/gazebo_ros_pkgs.git',         version: kinetic-devel}
