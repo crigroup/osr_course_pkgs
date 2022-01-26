@@ -18,8 +18,7 @@
     <rotationaxis>0 1 0 -90</rotationaxis>
     <rotationaxis>0 0 1 180</rotationaxis>
     <Geom type="trimesh" modifiable="true">
-      <diffuseColor>0.2 0.2 0.2</diffuseColor>
-      <render>meshes/collision/robotiq_85_base_link.stl 1</render>
+      <render>meshes/visual/robotiq_85_base_link.wrl 1</render>
       <collision>meshes/collision/robotiq_85_base_link.stl 1</collision>
     </Geom>
     <mass type="custom">
@@ -32,8 +31,7 @@
     <translation>0.05490451627  0.03060114443  0.0</translation>
     <rotationaxis>1 0 0 180</rotationaxis>
     <Geom type="trimesh" modifiable="true">
-      <diffuseColor>0.2 0.2 0.2</diffuseColor>
-      <render>meshes/collision/robotiq_85_knuckle_link.stl 1</render>
+      <render>meshes/visual/robotiq_85_knuckle_link.wrl 1</render>
       <collision>meshes/collision/robotiq_85_knuckle_link.stl 1</collision>
     </Geom>
     <mass type="custom">
@@ -45,8 +43,7 @@
     <offsetfrom>robotiq_85_base_link</offsetfrom>
     <translation>0.05490451627 -0.03060114443 0.0</translation>
     <Geom type="trimesh" modifiable="true">
-      <diffuseColor>0.2 0.2 0.2</diffuseColor>
-      <render>meshes/collision/robotiq_85_knuckle_link.stl 1</render>
+      <render>meshes/visual/robotiq_85_knuckle_link.wrl 1</render>
       <collision>meshes/collision/robotiq_85_knuckle_link.stl 1</collision>
     </Geom>
     <mass type="custom">
@@ -58,8 +55,7 @@
     <offsetfrom>robotiq_85_left_knuckle_link</offsetfrom>
     <translation>-0.00408552455  -0.03148604435  0.0</translation>
     <Geom type="trimesh" modifiable="true">
-      <diffuseColor>0.2 0.2 0.2</diffuseColor>
-      <render>meshes/collision/robotiq_85_finger_link.stl 1</render>
+      <render>meshes/visual/robotiq_85_finger_link.wrl 1</render>
       <collision>meshes/collision/robotiq_85_finger_link.stl 1</collision>
     </Geom>
     <mass type="custom">
@@ -71,8 +67,7 @@
     <offsetfrom>robotiq_85_right_knuckle_link</offsetfrom>
     <translation>-0.00408552455 -0.03148604435 0.0</translation>
     <Geom type="trimesh" modifiable="true">
-      <diffuseColor>0.2 0.2 0.2</diffuseColor>
-      <render>meshes/collision/robotiq_85_finger_link.stl 1</render>
+      <render>meshes/visual/robotiq_85_finger_link.wrl 1</render>
       <collision>meshes/collision/robotiq_85_finger_link.stl 1</collision>
     </Geom>
     <mass type="custom">
@@ -85,8 +80,7 @@
     <translation>0.06142 0.0127 0</translation>
     <rotationaxis>1 0 0 180</rotationaxis>
     <Geom type="trimesh" modifiable="true">
-      <diffuseColor>0.2 0.2 0.2</diffuseColor>
-      <render>meshes/collision/robotiq_85_inner_knuckle_link.stl 1</render>
+      <render>meshes/visual/robotiq_85_inner_knuckle_link.wrl 1</render>
       <collision>meshes/collision/robotiq_85_inner_knuckle_link.stl 1</collision>
     </Geom>
     <mass type="custom">
@@ -98,8 +92,7 @@
     <offsetfrom>robotiq_85_base_link</offsetfrom>
     <translation>0.06142 -0.0127 0</translation>
     <Geom type="trimesh" modifiable="true">
-      <diffuseColor>0.2 0.2 0.2</diffuseColor>
-      <render>meshes/collision/robotiq_85_inner_knuckle_link.stl 1</render>
+      <render>meshes/visual/robotiq_85_inner_knuckle_link.wrl 1</render>
       <collision>meshes/collision/robotiq_85_inner_knuckle_link.stl 1</collision>
     </Geom>
     <mass type="custom">
@@ -111,8 +104,7 @@
     <offsetfrom>robotiq_85_left_inner_knuckle_link</offsetfrom>
     <translation>0.04303959807 -0.03759940821 0.0</translation>
     <Geom type="trimesh" modifiable="true">
-      <diffuseColor>0.2 0.2 0.2</diffuseColor>
-      <render>meshes/collision/robotiq_85_finger_tip_link.stl 1</render>
+      <render>meshes/visual/robotiq_85_finger_tip_link.wrl 1</render>
       <collision>meshes/collision/robotiq_85_finger_tip_link.stl 1</collision>
     </Geom>
     <mass type="custom">
@@ -124,8 +116,7 @@
     <offsetfrom>robotiq_85_right_inner_knuckle_link</offsetfrom>
     <translation>0.04303959807 -0.03759940821 0.0</translation>
     <Geom type="trimesh" modifiable="true">
-      <diffuseColor>0.2 0.2 0.2</diffuseColor>
-      <render>meshes/collision/robotiq_85_finger_tip_link.stl 1</render>
+      <render>meshes/visual/robotiq_85_finger_tip_link.wrl 1</render>
       <collision>meshes/collision/robotiq_85_finger_tip_link.stl 1</collision>
     </Geom>
     <mass type="custom">
